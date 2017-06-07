@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--<script src = "http://threejs.org/examples/js/libs/stats.min.js"></script>-->
+<link rel="stylesheet" href="temp_styles.css">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" href="vendor/rangeslider.css">
+<!-- Latest compiled and minified JavaScript -->
+</head>
+<body>
+	<div class="full-vis-container">
+		<div class="vis-container" id="visContainer">
+			<div class="statsbox-container clearfix">
+				<div class="time-container" id="time-container"></div>
+				<div class="statsbox-sphere" id="statsbox-sphere1">
+					<div class="statsbox-label" id="statsbox-label-sphere1">
+						Sphere 1
+					</div>
+					<div class="statsbox" id="commonstatsbox">
+					</div>
+					<div class="outofboundsbox" id="outofboundsbox-sphere1">
+						OUT OF BOUNDS
+					</div>
+					<div class="statsbox" id="gamespecificstatsbox">
+					</div>
+				</div>
+
+
+				<div class="statsbox-sphere" id="statsbox-sphere2">
+					<div class="statsbox-label" id="statsbox-label-sphere2">
+						Sphere 2
+					</div>
+					<div class="statsbox" id="commonstatsbox">
+					</div>
+					<div class="outofboundsbox" id="outofboundsbox-sphere2">
+						OUT OF BOUNDS
+					</div>
+					<div class="statsbox" id="gamespecificstatsbox">
+					</div>
+				</div>
+			</div>
+
+			<div id="canvasContainer"></div>
+
+
+			<div id="debug-box"></div>
+		</div>
+
+		<input type="range" id="progressBar" style="width: 100%; height: 50px" min="0" max="100" step="0.001"></input>
+
+		<div id="buttons" class="zr-buttons" style="text-align:center">
+			<button type="button" class="btn btn-default" id="zr-control-playpause">
+				<span class="glyphicon glyphicon-pause" aria-hidden="true"></span>
+			</button>
+
+			<div class="btn-group" role="group" aria-label="...">
+				<button type="button" class="btn btn-default zr-control-speed" data-speed="1">x1</button>
+				<button type="button" class="btn btn-default zr-control-speed" data-speed="2">x2</button>
+				<button type="button" class="btn btn-default zr-control-speed" data-speed="4">x4</button>
+				<button type="button" class="btn btn-default zr-control-speed" data-speed="10">x10</button>
+			</div>
+
+			<div class="btn-group" role="group" aria-label="...">
+				<button type="button" class="btn btn-default" id="zr-control-restart">
+					<span class="glyphicon glyphicon-repeat" aria-hidden="true"></span>
+				</button>
+				<button type="button" class="btn btn-default" id="zr-control-zoomin">
+					<span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>
+				</button>
+				<button type="button" class="btn btn-default" id="zr-control-zoomout">
+					<span class="glyphicon glyphicon-zoom-out" aria-hidden="true"></span>
+				</button>
+			</div>
+		</div>
+	</div>
+
+	<script src="/vendor/jquery-2.1.4.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<script src="vendor/three.js"></script>
+	<script src="vendor/orbitControls.js"></script>
+	<script src="vendor/helvetiker_typeface.js"></script>
+	<script src="vendor/rangeslider.min.js"></script>
+	<!-- <script data-main="out/scripts/scripts" src="/vendor/require.js"></script> -->
+	<script src="/vendor/require.js"></script>
+	<!-- <script src="/out/full/main.js"></script> -->
+
+	<script>
+	window.VisualizationConfig = {
+		GameVersion: "FreeMode",
+    CamStartingPosition: [-2.5, 0, 0],
+	}
+
+	function setupProgressBar(gm) {
+		var progressbar = $("#progressBar");
+		$("#progressBar").rangeslider({
+			polyfill: false,
+			onSlide: function(pos, val) { gm.subsystems["progressBarSubsystem"].onChange(val / 100.0) },
+			onSlideEnd: function(pos, val) { gm.subsystems["progressBarSubsystem"].onChange(val / 100.0) },
+		});
+
+		gm.subsystems["progressBarSubsystem"].updateProgressBar = function(val) {
+			progressbar.val((val * 100).toString()).change();
+		}
+	}
+
+	function decoratePlayPauseButton(gm) {
+		var icon;
+		var rightClass;
+		var wrongClass;
+		if (gm.paused) {
+			icon = '<span class="glyphicon glyphicon-play" aria-hidden="true"></span>';
+			rightClass = "btn-success";
+			wrongClass = "btn-warning";
+		} else {
+			icon = '<span class="glyphicon glyphicon-pause" aria-hidden="true"></span>';
+			rightClass = "btn-warning";
+			wrongClass = "btn-success";
+		}
+
+		$("#zr-control-playpause").html(icon);
+		$("#zr-control-playpause").removeClass(wrongClass);
+		$("#zr-control-playpause").addClass(rightClass);
+	}
+
+	function setupButtons(gm) {
+		$("#zr-control-playpause").click(function(el) {
+			gm.togglePause();
+		});
+
+		gm.setCallbackOnPause(decoratePlayPauseButton);
+
+		$("#zr-control-restart").click(function() {gm.reset()});
+
+		$(".zr-control-speed").click(function(e) {
+			var speed = parseInt(e.target.getAttribute("data-speed"));
+			gm.changeSpeed(speed);
+		});
+
+		// This is incredibly hacky and while it works, it would be great to add a zoom
+		// function to OrbitControls
+		var buildFakeZoomEvent = function(delta) {
+			var e = new Event("mousewheel");
+			e.wheelDelta = delta;
+			e.detail = -delta;
+			return e;
+		}
+
+		document.getElementById("zr-control-zoomin").addEventListener("click", function() {
+				var e = buildFakeZoomEvent(600);
+				$("canvas")[0].dispatchEvent(e);
+		});
+
+		document.getElementById("zr-control-zoomout").addEventListener("click", function() {
+				var e = buildFakeZoomEvent(-600);
+				$("canvas")[0].dispatchEvent(e);
+		});
+	}
+	// don't cache for debugging
+	require.config({ urlArgs: "v=" +  (new Date()).getTime() });
+	require(["out/scripts/scripts/ZR"], function(ZR) {
+		console.log("asdf");
+		ZR.init(function(gm) {
+			setupProgressBar(gm);
+			decoratePlayPauseButton(gm);
+			setupButtons(gm);
+			window.gm = gm;
+
+			$(window).resize(function() {
+				gm.onResize();
+				console.log("resized");
+			});
+		});
+	});
+	</script>
+</body

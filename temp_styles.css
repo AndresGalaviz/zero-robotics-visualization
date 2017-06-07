@@ -1,0 +1,235 @@
+body {
+    width: 100%;
+}
+
+.full-vis-container {
+  position: relative;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 11px;
+}
+
+.vis-container {
+  position: relative;
+}
+
+.statsbox-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  box-sizing: border-box;
+  width: 100%;
+  display:block;
+}
+
+.time-container {
+  top: 0;
+  width: 80px;
+  margin: auto;
+  background:blue;
+  
+  border-top: 0;
+  border-radius: 0 0 5px 5px;
+  background: rgba(255, 255, 255, 0.7);
+  border:3px solid rgba(100, 100, 100, 0.7);
+  
+  text-align: center;
+  padding: 5px;
+}
+
+.statsbox-sphere {
+  width: 246px;
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.7);
+  border-top: 0;
+}
+
+.outofboundsbox {
+  line-height: 12px;
+  padding: 0 15px 0 15px;
+  text-align: center;
+  font-weight: 800;
+  font-size: 15px;
+  visibility: hidden;
+}
+
+.blink {
+  -webkit-animation: blink 1s step-end infinite;
+  animation: blink 1s step-end infinite;
+  visibility: visible;
+}
+
+@-webkit-keyframes blink { 50% { visibility: hidden; }}
+@keyframes blink { 50% { visibility: hidden; }}
+
+#outofboundsbox-sphere1 {
+  color: rgb(0, 0, 255);  
+}
+
+#outofboundsbox-sphere2 {
+  color: rgb(255, 0, 0);  
+}
+
+.statsbox {
+  padding: 15px;
+}
+
+.statsbox-label {  
+  padding: 17px 20px 0 20px;
+  font-weight: 800;
+  font-size: 12px;
+  height: 36px;
+  
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#statsbox-label-sphere1 {
+  text-align: left;
+  color: rgb(0, 0, 255);
+}
+
+#statsbox-label-sphere2 {
+  text-align: right;
+  color: rgb(255, 0, 0);
+}
+
+#statsbox-sphere1 {
+  position: absolute;
+  left:0px;
+  top:0px;
+  border-left: 0;
+  border-radius: 0 0 10px 0;
+  border:3px solid rgba(0, 0, 255, 0.7);
+}
+
+#statsbox-sphere2 {
+  position: absolute;
+  right:0px;
+  top:0px;
+  border-right: 0;
+  border-radius: 0 0 0 10px;
+  border:3px solid rgba(255, 0, 0, 0.7);
+}
+
+
+.statsbox div {
+	display: inline-block;
+  width: 60px;
+  margin: 0 5px 0 5px;
+  border-bottom: 1px solid;
+}
+
+/*.statsbox .stats-entry:not(:nth-child(3n))::after {
+	display: inline-block;
+  content: "|";
+}*/
+
+.statsbox .wide {
+	display: inline-block;
+  width: 95px;
+  margin: 0px 5px 0px 5px;
+}
+
+.statsbox .green{
+  border-radius: 3px;
+  padding: 0px 3px 0px 3px;
+  border: 1px solid #00FF00;
+}
+
+.statsbox .orange {
+  border-radius: 3px;
+  padding: 0px 3px 0px 3px;
+  border: 1px solid #FFCC00;
+}
+
+.statsbox .red {
+  border-radius: 3px;
+  padding: 0px 3px 0px 3px;
+  border: 1px solid #FF0000;
+}
+
+.statsbox .white {
+  border-radius: 3px;
+  padding: 0px 3px 0px 3px;
+  border: 1px solid #FFFFFF;
+}
+
+.statsbox .grey {
+  border-radius: 3px;
+  padding: 0px 3px 0px 3px;
+  border: 1px solid #888888;
+}
+
+.statsbox .black {
+  border-radius: 3px;
+  padding: 0px 3px 0px 3px;
+  border: 1px solid #000000;
+}
+
+.statsbox .stats-label {
+  float: left;
+  font-weight: 800;
+}
+
+.statsbox .stats-value {
+  float: right;
+}
+
+.debug-tag {
+	font-weight: 800;
+	/*text-decoration: underline;*/
+}
+
+.debug-tag::before {
+  content: "["
+}
+
+.debug-tag::after {
+  content: "]"
+}
+
+.debug-sphere1 {
+  color: blue;
+}
+
+.debug-sphere2 {
+  color: red;
+}
+
+.debug-time {
+  font-style: italic;
+}
+
+#debug-box {
+  font-size: 11px;
+  overflow-y: scroll;
+  position: absolute;
+  bottom: 0;
+  height: 115px;
+  width: 75%;
+  left: 15%;
+  padding: 10px;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.7);
+  border:3px solid rgba(255, 255, 255, 0.9);
+  border-radius: 10px 10px 0 0;
+}
+
+canvas {
+	margin-left: auto;
+	margin-right: auto;
+	align: center;
+}
+
+.rangeslider {
+  margin-top: 10px;
+  width: 100%;
+}
+
+.zr-buttons {
+  margin-top: 15px;
+}
