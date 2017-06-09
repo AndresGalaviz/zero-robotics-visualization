@@ -1,6 +1,7 @@
 
 import GameSpecificStatsSubsystem = require("../subsystems/2017HS/GameSpecificStatsSubsystem");
 import AnalyzerSubsystem = require("../subsystems/2017HS/AnalyzerSubsystem");
+import SampleSubsystem = require("../subsystems/2017HS/SampleSubsystem");
 import GameManager = require("../GameManager");
 import Results = require("../Results");
 import TextWithTime = Results.TextWithTime;
@@ -17,6 +18,7 @@ export class ResultObject2017HS extends ResultObject implements IExResObject {
   public setupGameManager(gameManager: GameManager) : void {
     gameManager.subsystems["gameSpecificStats"] = new GameSpecificStatsSubsystem(gameManager);
     gameManager.subsystems["AnalyzerSubsystem"] = new AnalyzerSubsystem(gameManager);
+    gameManager.subsystems["SampleSubsystem"] = new SampleSubsystem(gameManager);
     //need to add other Subsystem constructers to add to dictionary here
   }
   
