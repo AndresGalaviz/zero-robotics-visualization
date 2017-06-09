@@ -1,7 +1,9 @@
+
 import BaseSubsystem = require("../subsystems/2017HS/BaseSubsystem");
 import AnalyzerSubsystem = require("../subsystems/2017HS/AnalyzerSubsystem");
 
 import GameSpecificStatsSubsystem = require("../subsystems/2017HS/GameSpecificStatsSubsystem");
+
 import GameManager = require("../GameManager");
 import Results = require("../Results");
 import TextWithTime = Results.TextWithTime;
@@ -13,6 +15,7 @@ export enum GameType {
   ZR3D,
   ZR2D
 };
+
 
 export class ResultObject2017HS extends ResultObject implements IExResObject {
   public setupGameManager(gameManager: GameManager) : void {
@@ -339,3 +342,4 @@ export enum ItemType2016HS {
 }
 
 var itemOrder = [ItemType2016HS.Large, ItemType2016HS.Medium, ItemType2016HS.Small, ItemType2016HS.Special, ItemType2016HS.Receiver];
+
