@@ -4,8 +4,8 @@ import Subsystem = require("../../Subsystem");
 import GameManager = require("../../GameManager");
 import Helpers = require("../../Helpers");
 
-// import Mappings2016HS = require("../../mappings/Mappings2016HS");
-// import ResultObject2016HS = Mappings2016HS.ResultObject2016HS;
+import Mappings2017HS = require("../../mappings/Mappings2017HS");
+import ResultObject2017HS = Mappings2017HS.ResultObject2017HS;
 
 class AnalyzerSubsystem implements Subsystem {
 	private analyzerMeshes: THREE.Mesh[][] = []; 
@@ -17,7 +17,7 @@ class AnalyzerSubsystem implements Subsystem {
 	}
 
 	init = () => {
-		var result = (<ResultObject2016HS> this.gameManager.resObject); //Uses 2016 Result Object
+		var result = (<ResultObject2017HS> this.gameManager.resObject); //Uses 2016 Result Object
 		// this.spsData = result.getSpsDrops();
 		this.setupBlueMeshes();
 		this.setupRedMeshes();
@@ -44,7 +44,7 @@ class AnalyzerSubsystem implements Subsystem {
 	private setupBlueMeshes = () => {
 		var geometry = new THREE.SphereGeometry(3,24,16);
 		var material = new THREE.MeshBasicMaterial({color: 0x0ad6ff, vertexColors: THREE.FaceColors});
-		this.spsMeshes[0] = [];
+		this.analyzerMeshes[0] = [];
 		for(var j = 0; j < this.analyzerData[0].length; j++) {
 			var mesh = new THREE.Mesh(geometry, material);
 			mesh.position.fromArray(Helpers.convertCoords(this.analyzerData[0][j].pos));
