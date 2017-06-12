@@ -16,6 +16,9 @@ import ResultObject2016HS = Mappings2016HS.ResultObject2016HS;
 import Mappings2016HS_ISS = require("./mappings/Mappings2016HS_ISS");
 import ResultObject2016HS_ISS = Mappings2016HS_ISS.ResultObject2016HS_ISS;
 
+import Mappings2017HS = require("./mappings/Mappings2017HS");
+import ResultObject2017HS = Mappings2017HS.ResultObject2017HS;
+
 import MappingsFreeMode = require("./mappings/MappingsFreeMode");
 import ResultObjectFreeMode = MappingsFreeMode.ResultObjectFreeMode;
 
@@ -45,6 +48,8 @@ module ConfigModule {
       case "SpySPHERES": return new ResultObject2015(data);
       case "SpySPHERES_ISS": return new ResultObject2015_ISS(data);
       case "SpySPHERES_MS": return new ResultObject2016MS(data);
+      //TODO double check actual 2017 name
+      case "ZRHS2017": return new ResultObject2017HS(data)
       default: return new ResultObjectFreeMode(data);
     }
   }

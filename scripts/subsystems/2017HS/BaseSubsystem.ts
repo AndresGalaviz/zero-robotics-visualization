@@ -12,6 +12,7 @@ class BaseSubsystem implements Subsystem {
   private baseMesh: THREE.Mesh;
 
   private baseRadius = Constants.Y2017HS.baseRadius;
+  //need a baseRadiusThing
 
   private base: number[];
 
@@ -24,16 +25,8 @@ class BaseSubsystem implements Subsystem {
 
   init = () => {
     this.resObject = <ResultObject2017HS> this.gameManager.resObject;
-	// this.blueZone = this.resObject.getZone(0);
-	// this.redZone = this.resObject.getZone(1);
     this.base = this.resObject.getBase();
-
-	this.blueZone[1] = -1 * this.blueZone[1];
-	this.redZone[1] = -1 * this.redZone[1];
-
-	// this.blueMesh = this.setupZone(this.blueZone, 0x0000FF);
-    // this.redMesh = this.setupZone(this.redZone, 0xFF0000);
-    this.baseMesh = this.setupZone(this.baseMesh, 0x0000FF);
+    this.baseMesh = this.setupZone(this.base, 0x0000FF);
   }
 
   update = (dt:number, time:number, paused:boolean) => {

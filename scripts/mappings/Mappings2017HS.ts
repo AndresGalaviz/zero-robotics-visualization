@@ -77,20 +77,9 @@ export class ResultObject2017HS extends ResultObject implements IExResObject {
     return this.simData.satData[satNumber].dF[0];
   }
 
-  getZone = (satNumber: number):number[] => {
-    var zone = [];
-
-    if (satNumber == 0){
-      zone[0] = 22.16;
-      zone[1] = 33.18;
-      zone[2] = 27.70;
-    } else {
-      zone[0] = -22.16;
-      zone[1] = -33.18;
-      zone[2] = -27.70;
-    }
-
-  
+//base is at center of the map
+  getBase = ():number[] => {
+    var zone = [0,0,0]; 
     return zone;
   }
 
