@@ -6,17 +6,17 @@
   "dependencies": {
     "amdclean": "^2.7.0",
     "chai": "^3.2.0",
-    "gulp": "^3.9.0",
+    "gulp": "^3.9.1",
     "gulp-live-server": "*",
+    "gulp-run": "*",
     "gulp-typescript": "*",
     "gulp-uglify": "^1.2.0",
-    "gulp-run": "*",
     "merge2": "^0.3.5",
     "mocha": "^2.2.5",
+    "requirejs": "2.1.20",
     "tsd": "^0.6.1",
     "typescript": "2.0.3",
-    "typescript-require": "^0.2.9",
-    "requirejs": "2.1.20"
+    "typescript-require": "^0.2.9"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
