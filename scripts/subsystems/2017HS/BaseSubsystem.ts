@@ -12,7 +12,6 @@ class BaseSubsystem implements Subsystem {
   private baseMesh: THREE.Mesh;
 
   private baseRadius = Constants.Y2017HS.baseRadius;
-  //need a baseRadiusThing
 
   private base: number[];
 
