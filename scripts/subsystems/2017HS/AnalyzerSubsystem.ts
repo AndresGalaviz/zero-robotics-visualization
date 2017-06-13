@@ -17,8 +17,8 @@ class AnalyzerSubsystem implements Subsystem {
 	}
 
 	init = () => {
-		var result = (<ResultObject2017HS> this.gameManager.resObject); 
-		// this.spsData = result.getSpsDrops();
+		var result = (<ResultObject2017HS> this.gameManager.resObject); //Uses 2016 Result Object
+		this.analyzerData = result.getAnalyzerDrops();
 		this.setupBlueMeshes();
 		this.setupRedMeshes();
 	}

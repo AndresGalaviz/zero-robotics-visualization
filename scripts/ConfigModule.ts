@@ -33,7 +33,7 @@ module ConfigModule {
   }
 
   export var Config: Type = {
-    GameVersion: "FreeMode",
+    GameVersion: "ZRHS2017",
     CamStartingPosition: [0, -2.5, -1],
   }
 
@@ -53,7 +53,7 @@ module ConfigModule {
       case "SpySPHERES_ISS": return new ResultObject2015_ISS(data);
       case "SpySPHERES_MS": return new ResultObject2016MS(data);
       case "ZRHS2017":
-      //  return new ResultObject2017HS(data);
+        return new ResultObject2017HS(data);
       default: return new ResultObjectFreeMode(data);
     }
   }

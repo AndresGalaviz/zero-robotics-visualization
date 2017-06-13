@@ -1,6 +1,6 @@
 import GameSpecificStatsSubsystem = require("../subsystems/2017HS/GameSpecificStatsSubsystem");
 import AnalyzerSubsystem = require("../subsystems/2017HS/AnalyzerSubsystem");
-import SampleSubsystem = require("../subsystems/2017HS/SampleSubsystem");
+// import SampleSubsystem = require("../subsystems/2017HS/SampleSubsystem");
 import GameManager = require("../GameManager");
 import Results = require("../Results");
 import TextWithTime = Results.TextWithTime;
@@ -17,7 +17,7 @@ export class ResultObject2017HS extends ResultObject implements IExResObject {
   public setupGameManager(gameManager: GameManager) : void {
     gameManager.subsystems["gameSpecificStats"] = new GameSpecificStatsSubsystem(gameManager);
     gameManager.subsystems["AnalyzerSubsystem"] = new AnalyzerSubsystem(gameManager);
-    gameManager.subsystems["SampleSubsystem"] = new SampleSubsystem(gameManager);
+    // gameManager.subsystems["SampleSubsystem"] = new SampleSubsystem(gameManager);
     //need to add other Subsystem constructers to add to dictionary here
   }
   
@@ -119,9 +119,30 @@ export class ResultObject2017HS extends ResultObject implements IExResObject {
       1: GameType.ZR2D
     }
 
-    return mapping[type];
+    // return mapping[type];
+    return GameType.ZR3D;
   }
-
+  getAnalyzerDrops = ():{time: number, pos: number[]}[][] => {
+      console.log("0 dU:",this.simData.satData[0].dU);
+    console.log("1 dU:",this.simData.satData[1].dU);
+      var result = [];
+    for(var i = 0; i < 2; i++) {
+      result[i] = [];
+        for(var j = 0; j < this.simData.satData[i].dU[2].length; j++) {
+        if(this.simData.satData[i].dU[2][j] == 1) {
+          console.log("sps dropped at ",j);
+          var pos = [];
+          var timeIndex = this.getLongIndexByTime(j);
+          for(var k = 0; k < 3; k++) {
+            pos[k] = this.simData.satData[i].st[k][timeIndex];
+          }
+          result[i].push({time: j, pos: pos});
+        }
+      }
+    }
+    console.log(result);
+    return result;
+  }
 }
 
 

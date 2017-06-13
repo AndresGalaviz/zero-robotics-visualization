@@ -5,8 +5,8 @@ import GameManager = require("../../GameManager");
 import Helpers = require("../../Helpers");
 import StatsSubsystemMod = require("../template/StatsSubsystem");
 import StatsSubsystem = StatsSubsystemMod.StatsSubsystem;
-import Results2016HS = require("../../mappings/Mappings2016HS");
-import ResultObject2016HS = Results2016HS.ResultObject2016HS;
+import Results2017HS = require("../../mappings/Mappings2017HS");
+import ResultObject2016HS = Results2017HS.ResultObject2017HS;
 
 class GameSpecificStatsSubsystem extends StatsSubsystem implements Subsystem {
   constructor(gameManager: GameManager) {
@@ -67,7 +67,6 @@ class GameSpecificStatsSubsystem extends StatsSubsystem implements Subsystem {
     return {
       longArrays: [],
       shortArrays: [
-        (<ResultObject2016HS> this.gameManager.resObject).getSpsHeld(satNumber),
         (<ResultObject2016HS> this.gameManager.resObject).getZoneError(satNumber),
         (<ResultObject2016HS> this.gameManager.resObject).getReceiver(satNumber),
         (<ResultObject2016HS> this.gameManager.resObject).getPointsPerSecond(satNumber)
