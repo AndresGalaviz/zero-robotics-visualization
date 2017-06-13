@@ -1,4 +1,3 @@
-
 import GameSpecificStatsSubsystem = require("../subsystems/2017HS/GameSpecificStatsSubsystem");
 import AnalyzerSubsystem = require("../subsystems/2017HS/AnalyzerSubsystem");
 import SampleSubsystem = require("../subsystems/2017HS/SampleSubsystem");
@@ -124,5 +123,7 @@ export class ResultObject2017HS extends ResultObject implements IExResObject {
   }
 
 }
+
+
 
 

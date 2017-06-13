@@ -156,25 +156,25 @@ export class ResultObject2016HS extends ResultObject implements IExResObject {
   }
 
   getSpsDrops = ():{time: number, pos: number[]}[][] => {
-    console.log("0 dU:",this.simData.satData[0].dU);
-  console.log("1 dU:",this.simData.satData[1].dU);
-    var result = [];
-  for(var i = 0; i < 2; i++) {
-    result[i] = [];
-      for(var j = 0; j < this.simData.satData[i].dU[2].length; j++) {
-      if(this.simData.satData[i].dU[2][j] == 1) {
-        console.log("sps dropped at ",j);
-        var pos = [];
-        var timeIndex = this.getLongIndexByTime(j);
-        for(var k = 0; k < 3; k++) {
-          pos[k] = this.simData.satData[i].st[k][timeIndex];
+      console.log("0 dU:",this.simData.satData[0].dU);
+    console.log("1 dU:",this.simData.satData[1].dU);
+      var result = [];
+    for(var i = 0; i < 2; i++) {
+      result[i] = [];
+        for(var j = 0; j < this.simData.satData[i].dU[2].length; j++) {
+        if(this.simData.satData[i].dU[2][j] == 1) {
+          console.log("sps dropped at ",j);
+          var pos = [];
+          var timeIndex = this.getLongIndexByTime(j);
+          for(var k = 0; k < 3; k++) {
+            pos[k] = this.simData.satData[i].st[k][timeIndex];
+          }
+          result[i].push({time: j, pos: pos});
         }
-        result[i].push({time: j, pos: pos});
       }
     }
-  }
-  console.log(result);
-  return result;
+    console.log(result);
+    return result;
   }
 
   getItemData = ():{pos: number[], att: number[], type: ItemType2016HS}[][] => {

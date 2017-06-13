@@ -1,6 +1,6 @@
 import GameManager = require("./GameManager");
-import Results2016HS = require("./mappings/Mappings2016HS");
-import ResultObject2016HS = Results2016HS.ResultObject2016HS;
+import Results2017HS = require("./mappings/Mappings2017HS");
+import ResultObject2016HS = Results2017HS.ResultObject2017HS;
 
 import Constants = require("./Constants");
 
