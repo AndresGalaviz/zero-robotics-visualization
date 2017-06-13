@@ -19,7 +19,7 @@ import ResultObject2016HS_ISS = Mappings2016HS_ISS.ResultObject2016HS_ISS;
 
 //TODO: Add the 2017 import modules 
 import Mappings2017HS = require("./mappings/Mappings2017HS");
-// import ResultObject2017HS = Mappings2017HS.ResultObject2017HS;
+import ResultObject2017HS = Mappings2017HS.ResultObject2017HS;
 
 
 
