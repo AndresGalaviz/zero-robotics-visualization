@@ -22,6 +22,10 @@ module Constants {
   	export var zoneRadius = 0.11 * scalingFactor; 
   }
 
+  export module Y2017HS {
+    export var baseRadius = .25 * scalingFactor;
+  }
+
   export var UP = new THREE.Vector3(0, 1, 0);
 
 }
