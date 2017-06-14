@@ -1,16 +1,15 @@
-/// <reference path="../../CommonImports"/>
+/// <reference path="../../CommonImports.ts"/>
 
 import Subsystem = require("../../Subsystem");
 import GameManager = require("../../GameManager");
 import Helpers = require("../../Helpers");
 
-import Mappings2016HS = require("../../mappings/Mappings2016HS");
-import ResultObject2016HS = Mappings2016HS.ResultObject2016HS;
+import Mappings2017HS = require("../../mappings/Mappings2017HS");
+import ResultObject2017HS = Mappings2017HS.ResultObject2017HS;
 
-class SpsSubsystem implements Subsystem {
-	private spsMeshes: THREE.Mesh[][] = [];
-	private spsData: {time: number, pos: number[]}[][];
-
+class AnalyzerSubsystem implements Subsystem {
+	private analyzerMeshes: THREE.Mesh[][] = []; 
+	private analyzerData: {time: number, pos: number[]}[][]; //2D array where each element is an object with time and pos properties
 	private gameManager : GameManager;
 
 	constructor(gameManager: GameManager) {
@@ -18,8 +17,8 @@ class SpsSubsystem implements Subsystem {
 	}
 
 	init = () => {
-		var result = (<ResultObject2016HS> this.gameManager.resObject);
-		this.spsData = result.getSpsDrops();
+		var result = (<ResultObject2017HS> this.gameManager.resObject); //Uses 2016 Result Object
+		this.analyzerData = result.getAnalyzerDrops();
 		this.setupBlueMeshes();
 		this.setupRedMeshes();
 	}
@@ -27,8 +26,8 @@ class SpsSubsystem implements Subsystem {
 	update = (dt:number, time:number, paused:boolean) => {
 		var time = this.gameManager.resObject.getShortIndexByTime(time);
 		for(var i = 0; i < 2; i++) {
-			for(var j = 0; j < this.spsData[i].length; j++) { 
-				this.spsMeshes[i][j].visible = (this.spsData[i][j].time <= time);
+			for(var j = 0; j < this.analyzerData[i].length; j++) { 
+				this.analyzerMeshes[i][j].visible = (this.analyzerData[i][j].time <= time);
 			}
 		}
 	}
@@ -39,33 +38,33 @@ class SpsSubsystem implements Subsystem {
 	togglePause = (paused:boolean, resumeTime:number) => {
 	}
 
-	changeSpeed = (speed:number):void => {
+	changeSpeed = (speed:number):void => { //play, togglePause, changeSpeed needed b/c of interface, no functionality
 	}
 
 	private setupBlueMeshes = () => {
 		var geometry = new THREE.SphereGeometry(3,24,16);
 		var material = new THREE.MeshBasicMaterial({color: 0x0ad6ff, vertexColors: THREE.FaceColors});
-		this.spsMeshes[0] = [];
-		for(var j = 0; j < this.spsData[0].length; j++) {
+		this.analyzerMeshes[0] = [];
+		for(var j = 0; j < this.analyzerData[0].length; j++) {
 			var mesh = new THREE.Mesh(geometry, material);
-			mesh.position.fromArray(Helpers.convertCoords(this.spsData[0][j].pos));
+			mesh.position.fromArray(Helpers.convertCoords(this.analyzerData[0][j].pos));
 			mesh.visible = false;
 			this.gameManager.scene.add(mesh);
-			this.spsMeshes[0][j] = mesh;
+			this.analyzerMeshes[0][j] = mesh;
 		}
 	}
 	private setupRedMeshes = () => {
 		var geometry = new THREE.SphereGeometry(3,24,16);
 		var material = new THREE.MeshBasicMaterial({color: 0xff0000, vertexColors: THREE.FaceColors});
-		this.spsMeshes[1] = [];
-		for(var j = 0; j < this.spsData[1].length; j++) {
+		this.analyzerMeshes[1] = [];
+		for(var j = 0; j < this.analyzerData[1].length; j++) {
 			var mesh = new THREE.Mesh(geometry, material);
-			mesh.position.fromArray(Helpers.convertCoords(this.spsData[1][j].pos));
+			mesh.position.fromArray(Helpers.convertCoords(this.analyzerData[1][j].pos));
 			mesh.visible = false;
 			this.gameManager.scene.add(mesh);
-			this.spsMeshes[1][j] = mesh;
+			this.analyzerMeshes[1][j] = mesh;
 		}
 	}
 }
 
-export = SpsSubsystem;
+export = AnalyzerSubsystem;

@@ -1,4 +1,4 @@
-/// <reference path="../../CommonImports"/>
+/// <reference path="../../CommonImports.ts"/>
 
 import Subsystem = require("../../Subsystem");
 import GameManager = require("../../GameManager");

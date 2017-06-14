@@ -145,7 +145,7 @@ export class ResultObject2017HS extends ResultObject implements IExResObject {
     return result;
   }
 
-  getSpsDrops = ():{time: number, pos: number[]}[][] => {
+  getAnalyzerDrops = ():{time: number, pos: number[]}[][] => {
     console.log("0 dU:",this.simData.satData[0].dU);
   console.log("1 dU:",this.simData.satData[1].dU);
     var result = [];
