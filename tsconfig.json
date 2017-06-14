@@ -47,10 +47,7 @@
        "./scripts/subsystems/2017HS/GameSpecificStatsSubsystem.ts",
        "./scripts/subsystems/2017HS/AnalyzerSubsystem.ts",
        "./scripts/subsystems/2017HS/SampleSubsystem.ts",
-<<<<<<< HEAD
-=======
        "./scripts/subsystems/2017HS/BaseSubsystem.ts",  
->>>>>>> origin/avi-branch
        "./scripts/subsystems/base/AxisSubsystem.ts",
        "./scripts/subsystems/base/BaseStatsSubsystem.ts",
        "./scripts/subsystems/base/DebugTextSubsystem.ts",
