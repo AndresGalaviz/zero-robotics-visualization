@@ -1,4 +1,4 @@
-/// <reference path="../../CommonImports"/>
+/// <reference path="../../CommonImports.ts"/>
 
 import Subsystem = require("../../Subsystem");
 import GameManager = require("../../GameManager");
@@ -18,7 +18,8 @@ class AnalyzerSubsystem implements Subsystem {
 
 	init = () => {
 		var result = (<ResultObject2017HS> this.gameManager.resObject); //Uses 2016 Result Object
-		this.analyzerData = result.getAnalyzerDrops();
+
+		this.analyzerData = [[],[]];
 		this.setupBlueMeshes();
 		this.setupRedMeshes();
 	}
@@ -42,28 +43,28 @@ class AnalyzerSubsystem implements Subsystem {
 	}
 
 	private setupBlueMeshes = () => {
-		var geometry = new THREE.SphereGeometry(3,24,16);
-		var material = new THREE.MeshBasicMaterial({color: 0x0ad6ff, vertexColors: THREE.FaceColors});
-		this.analyzerMeshes[0] = [];
-		for(var j = 0; j < this.analyzerData[0].length; j++) {
-			var mesh = new THREE.Mesh(geometry, material);
-			mesh.position.fromArray(Helpers.convertCoords(this.analyzerData[0][j].pos));
-			mesh.visible = false;
-			this.gameManager.scene.add(mesh);
-			this.analyzerMeshes[0][j] = mesh;
-		}
+		var geom = new THREE.SphereGeometry(10, 32, 32);
+    	var material = new THREE.MeshBasicMaterial({
+			color: 0xf4e842,
+			transparent: true,
+			opacity: 0.2 
+			});
+    	var mesh = new THREE.Mesh(geom, material);
+    	this.gameManager.scene.add(mesh);
+		var pos = [22.16,33.18,27.70];
+		mesh.position.fromArray(pos);
 	}
 	private setupRedMeshes = () => {
-		var geometry = new THREE.SphereGeometry(3,24,16);
-		var material = new THREE.MeshBasicMaterial({color: 0xff0000, vertexColors: THREE.FaceColors});
-		this.analyzerMeshes[1] = [];
-		for(var j = 0; j < this.analyzerData[1].length; j++) {
-			var mesh = new THREE.Mesh(geometry, material);
-			mesh.position.fromArray(Helpers.convertCoords(this.analyzerData[1][j].pos));
-			mesh.visible = false;
-			this.gameManager.scene.add(mesh);
-			this.analyzerMeshes[1][j] = mesh;
-		}
+		var geom = new THREE.SphereGeometry(10, 32, 32);
+    	var material = new THREE.MeshBasicMaterial({
+			color: 0xf4e842,
+			transparent: true,
+			opacity: 0.2 
+			});
+    	var mesh = new THREE.Mesh(geom, material);
+    	this.gameManager.scene.add(mesh);
+		var pos = [-22.16,-33.18,-27.70];
+		mesh.position.fromArray(pos);
 	}
 }
 
