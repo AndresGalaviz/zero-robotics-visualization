@@ -20,8 +20,7 @@ class AnalyzerSubsystem implements Subsystem {
 		var result = (<ResultObject2017HS> this.gameManager.resObject); //Uses 2016 Result Object
 
 		this.analyzerData = [[],[]];
-		this.setupBlueMeshes();
-		this.setupRedMeshes();
+		this.setupMeshes();
 	}
 
 	update = (dt:number, time:number, paused:boolean) => {
@@ -42,7 +41,7 @@ class AnalyzerSubsystem implements Subsystem {
 	changeSpeed = (speed:number):void => { //play, togglePause, changeSpeed needed b/c of interface, no functionality
 	}
 
-	private setupBlueMeshes = () => {
+	private setupMeshes = () => {
 		var geom = new THREE.SphereGeometry(10, 32, 32);
     	var material = new THREE.MeshBasicMaterial({
 			color: 0xf4e842,
@@ -53,8 +52,6 @@ class AnalyzerSubsystem implements Subsystem {
     	this.gameManager.scene.add(mesh);
 		var pos = [22.16,33.18,27.70];
 		mesh.position.fromArray(pos);
-	}
-	private setupRedMeshes = () => {
 		var geom = new THREE.SphereGeometry(10, 32, 32);
     	var material = new THREE.MeshBasicMaterial({
 			color: 0xf4e842,
