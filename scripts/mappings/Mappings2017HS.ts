@@ -82,7 +82,14 @@ export class ResultObject2017HS extends ResultObject implements IExResObject {
     var zone = [0,0,0]; 
     return zone;
   }
-
+  getAnalyzer1 = ():number[] =>{
+      var pos = [22.16,33.18,27.70]; //returns the position of the first analyzer object
+      return pos 
+  }
+getAnalyzer2 = ():number[] =>{
+    var pos = [-22.16,-33.18,-27.70];
+    return pos;
+  }
   getZoneError = (satNumber: number):number[] => {
   return this.simData.satData[satNumber].dU[3].map(x => x / 10000);
   }
