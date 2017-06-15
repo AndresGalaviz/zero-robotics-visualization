@@ -71,6 +71,16 @@ class SatelliteSubsystem implements Subsystem {
   private constructSphere = (sphereIndex : number, geometry: THREE.Geometry,
     material: THREE.Material): [THREE.Mesh, THREE.Animation] => {
 
+
+  // var` ballGeo = new THREE.SphereGeometry(5,30,30);
+  // var material = new THREE.MeshPhongMaterial({color: 0x0000FF}); 
+  // var ball = new THREE.Mesh(ballGeo, material);
+  // ball.position.y=-6;
+  // var shipGeo = new THREE.ConeGeometry(2, 5, 30);
+  // ball.updateMatrix();
+  // shipGeo.mergeMesh(ball);
+  // var ship = new THREE.Mesh(shipGeo, material);
+  // scene.add(ship);` <--- This works in the ThreeJS editor need to figure out how to make it work here by finding out where the Sphere Geometry is coming from
     var sphere = new THREE.Mesh( geometry.clone(), material);
 
     var animData = this.createAnimData(sphereIndex);
