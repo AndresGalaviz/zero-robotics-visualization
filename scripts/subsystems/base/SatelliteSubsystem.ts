@@ -82,16 +82,23 @@ class SatelliteSubsystem implements Subsystem {
   // var ship = new THREE.Mesh(shipGeo, material);
   // scene.add(ship);` <--- This works in the ThreeJS editor need to figure out how to make it work here by finding out where the Sphere Geometry is coming from
     var sphere = new THREE.Mesh( geometry.clone(), material);
-
-    var animData = this.createAnimData(sphereIndex);
-
+    //var drill = new THREE.CylinderGeometry(0,2,5,20);  
+    var drill = new THREE.CylinderGeometry(0,50,50,20); 
+     var animData = this.createAnimData(sphereIndex);
     sphere.position.set(<any> animData.hierarchy[0].keys[0].pos[0], <any> animData.hierarchy[0].keys[0].pos[1],<any> animData.hierarchy[0].keys[0].pos[2]);
 
-    var sphereAnim = new THREE.Animation( sphere, animData);
+    drill.mergeMesh(sphere);
+    var space = new THREE.Mesh(drill,material);
+
+   
+
+    //var sphereAnim = new THREE.Animation( sphere, animData);
+    var sphereAnim = new THREE.Animation(space,animData);
     sphereAnim.loop = false;
     // sphereAnim.play();
 
-    return [sphere, sphereAnim];
+    //return [sphere, sphereAnim];
+    return [space,sphereAnim];
   }
 
   private createAnimData = (satNumber: number): THREE.AnimationData => {
