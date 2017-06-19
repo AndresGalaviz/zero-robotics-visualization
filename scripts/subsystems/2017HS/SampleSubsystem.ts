@@ -31,6 +31,12 @@ class SampleSubsystem implements Subsystem {
 			var anim = new THREE.Animation(this.itemMeshes[i], animData[i]);
 	   		anim.loop = false;
 			this.itemAnims[i] = anim;
+		// working code for visualizing the sample in three.js editor, don't know the equivalent of scene.add
+		// var geometry = new THREE.CubeGeometry(100,150,100);
+		// var material = new THREE.MeshLambertMaterial({color: 0x996633FF});
+		// var cube = new THREE.Mesh( geometry, material );
+		// scene.add(cube)
+
 		}
 	}
 
