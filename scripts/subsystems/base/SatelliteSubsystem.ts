@@ -92,12 +92,12 @@ class SatelliteSubsystem implements Subsystem {
 
    
 
-    //var sphereAnim = new THREE.Animation( sphere, animData);
+    // var sphereAnim = new THREE.Animation( sphere, animData);
     var sphereAnim = new THREE.Animation(space,animData);
     sphereAnim.loop = false;
     // sphereAnim.play();
 
-    //return [sphere, sphereAnim];
+    // return [sphere, sphereAnim];
     return [space,sphereAnim];
   }
 
