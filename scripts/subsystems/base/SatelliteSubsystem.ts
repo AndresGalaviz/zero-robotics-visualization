@@ -28,19 +28,23 @@ class SatelliteSubsystem implements Subsystem {
     loader.load(this.gameManager.resourcePath + "sphere_correct_normals.json",
       (geometry: THREE.Geometry, materials: THREE.Material[]) => {
         // debugger;
-        this.sphereZeroMesh.geometry = geometry;
-        this.sphereOneMesh.geometry = geometry.clone();
-        this.sphereZeroMesh.material = materials[0];
-        this.sphereOneMesh.material = materials[1];
+        // this.sphereZeroMesh.geometry = geometry;
+        // this.sphereOneMesh.geometry = geometry.clone();
+        // this.sphereZeroMesh.material = materials[0];
+        // this.sphereOneMesh.material = materials[1];
+        this.sphereZeroMesh = new THREE.Mesh(geometry,materials[0]);
+        this.sphereOneMesh = new THREE.Mesh(geometry.clone(),materials[1]);
       });
-      
+      console.log("Geo is: " + this.sphereZeroMesh.geometry);
       loader.load(this.gameManager.resourcePath + "cone-3d-shape.json",
         (geometry: THREE.Geometry, materials: THREE.Material[])=>{
           console.log("geometry is: " + geometry);
-            this.sphereZeroDrillMesh.geometry = geometry;
-            this.sphereOneDrillMesh.geometry = geometry.clone();
-            this.sphereZeroMesh.material = materials[0];
-            this.sphereZeroMesh.material = materials[0];
+            // this.sphereZeroDrillMesh.geometry = geometry;
+            // this.sphereOneDrillMesh.geometry = geometry.clone();
+            // this.sphereZeroMesh.material = materials[0];
+            // this.sphereZeroMesh.material = materials[0];
+            this.sphereZeroDrillMesh = new THREE.Mesh(geometry,materials[0]);
+            this.sphereOneDrillMesh = new THREE.Mesh(geometry.clone(),materials[0]);
         }
       );
     [this.sphereZeroMesh, this.sphereZeroAnim] = this.constructSphere(0, this.sphereZeroMesh.geometry,this.sphereZeroDrillMesh.geometry, null);
@@ -86,23 +90,27 @@ class SatelliteSubsystem implements Subsystem {
     material: THREE.Material): [THREE.Mesh, THREE.Animation] => {
 
 
-  // var` ballGeo = new THREE.SphereGeometry(5,30,30);
-  // var material = new THREE.MeshPhongMaterial({color: 0x0000FF}); 
-  // var ball = new THREE.Mesh(ballGeo, material);
-  // ball.position.y=-6;
-  // var shipGeo = new THREE.ConeGeometry(2, 5, 30);
-  // ball.updateMatrix();
-  // shipGeo.mergeMesh(ball);
-  // var ship = new THREE.Mesh(shipGeo, material);
-  // scene.add(ship);` <--- This works in the ThreeJS editor need to figure out how to make it work here by finding out where the Sphere Geometry is coming from
+// var material = new THREE.MeshBasicMaterial( {color: 0xffff00} );
+
+// var drillGeo = new THREE.ConeGeometry(5,5,5);
+// var drill = new THREE.Mesh(drillGeo,material);
+// var sphereGeo = new THREE.SphereGeometry(5,30,30);
+// var sphere = new THREE.Mesh(sphereGeo,material);
+// var singleGeometry = new THREE.Geometry();
+
+// singleGeometry.merge(drill.geometry);
+// //drill.updateMatrix();
+// singleGeometry.merge(sphere.geometry);
+// var unifiedMesh = new THREE.Mesh(singleGeometry,material);
+// scene.add(unifiedMesh); <--- works in THREE.Js editor but not here :(
     var sphere = new THREE.Mesh( spheregeometry.clone(), material);
     var drill = new THREE.Mesh(drillgeometry,material);
      var animData = this.createAnimData(sphereIndex);
     sphere.position.set(<any> animData.hierarchy[0].keys[0].pos[0], <any> animData.hierarchy[0].keys[0].pos[1],<any> animData.hierarchy[0].keys[0].pos[2]);
 
     var singleGeometry = new THREE.Geometry();
-    singleGeometry.merge(sphere.geometry,sphere.matrix,0);
-    singleGeometry.merge(drill.geometry,drill.matrix,0);
+    singleGeometry.merge(sphere.geometry);
+    singleGeometry.merge(drill.geometry);
     var unifiedMesh = new THREE.Mesh(singleGeometry,material);
    
 
