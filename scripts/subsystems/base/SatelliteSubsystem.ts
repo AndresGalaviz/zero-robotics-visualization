@@ -8,11 +8,10 @@ import Constants = require("../../Constants");
 class SatelliteSubsystem implements Subsystem {
   private sphereZeroAnim : THREE.Animation;
   sphereZeroMesh : THREE.Mesh;
-  sphereZeroDrillMesh : THREE.Mesh;
 
   private sphereOneAnim : THREE.Animation;
   sphereOneMesh : THREE.Mesh;
-  sphereOneDrillMesh: THREE.Mesh;
+
 
   private sphereGeom : THREE.Geometry;
 
@@ -23,36 +22,24 @@ class SatelliteSubsystem implements Subsystem {
   }
 
   init = () => {
-    var loader = new THREE.JSONLoader();
+ 
+    [this.sphereZeroMesh, this.sphereZeroAnim] = this.constructSphere(0, new THREE.Geometry() ,3, null); //why does this work a c k 
+    [this.sphereOneMesh, this.sphereOneAnim] = this.constructSphere(1, new THREE.Geometry(),3, null);
+    this.gameManager.scene.add(this.sphereZeroMesh);
+    this.gameManager.scene.add(this.sphereOneMesh);
+    
+   var loader = new THREE.JSONLoader();
     loader.crossOrigin = 'anonymous';
     loader.load(this.gameManager.resourcePath + "sphere_correct_normals.json",
       (geometry: THREE.Geometry, materials: THREE.Material[]) => {
         // debugger;
-        // this.sphereZeroMesh.geometry = geometry;
-        // this.sphereOneMesh.geometry = geometry.clone();
-        // this.sphereZeroMesh.material = materials[0];
-        // this.sphereOneMesh.material = materials[1];
-        this.sphereZeroMesh = new THREE.Mesh(geometry,materials[0]);
-        this.sphereOneMesh = new THREE.Mesh(geometry.clone(),materials[1]);
+        this.sphereZeroMesh.geometry = geometry;
+        this.sphereOneMesh.geometry = geometry.clone();
+        this.sphereZeroMesh.material = materials[0];
+        this.sphereOneMesh.material = materials[1];
       });
-      console.log("Geo is: " + this.sphereZeroMesh.geometry);
-      loader.load(this.gameManager.resourcePath + "cone-3d-shape.json",
-        (geometry: THREE.Geometry, materials: THREE.Material[])=>{
-          console.log("geometry is: " + geometry);
-            // this.sphereZeroDrillMesh.geometry = geometry;
-            // this.sphereOneDrillMesh.geometry = geometry.clone();
-            // this.sphereZeroMesh.material = materials[0];
-            // this.sphereZeroMesh.material = materials[0];
-            this.sphereZeroDrillMesh = new THREE.Mesh(geometry,materials[0]);
-            this.sphereOneDrillMesh = new THREE.Mesh(geometry.clone(),materials[0]);
-        }
-      );
-    [this.sphereZeroMesh, this.sphereZeroAnim] = this.constructSphere(0, this.sphereZeroMesh.geometry,this.sphereZeroDrillMesh.geometry, null);
-    [this.sphereOneMesh, this.sphereOneAnim] = this.constructSphere(1, this.sphereOneMesh.geometry,this.sphereOneDrillMesh.geometry, null);
-    this.gameManager.scene.add(this.sphereZeroMesh);
-    this.gameManager.scene.add(this.sphereOneMesh);
+  //    
 
-    
   }
 
   update = (dt:number, time:number, paused:boolean) => {}
@@ -86,7 +73,7 @@ class SatelliteSubsystem implements Subsystem {
     return this.sphereZeroAnim.data.length;
   }
 
-  private constructSphere = (sphereIndex : number, spheregeometry: THREE.Geometry,drillgeometry: THREE.Geometry, 
+  private constructSphere = (sphereIndex : number, spheregeometry: THREE.Geometry,drillgeometry: number, 
     material: THREE.Material): [THREE.Mesh, THREE.Animation] => {
 
 
@@ -104,23 +91,20 @@ class SatelliteSubsystem implements Subsystem {
 // var unifiedMesh = new THREE.Mesh(singleGeometry,material);
 // scene.add(unifiedMesh); <--- works in THREE.Js editor but not here :(
     var sphere = new THREE.Mesh( spheregeometry.clone(), material);
-    var drill = new THREE.Mesh(drillgeometry,material);
+    // var drill = new THREE.Mesh(drillgeometry,material);
      var animData = this.createAnimData(sphereIndex);
     sphere.position.set(<any> animData.hierarchy[0].keys[0].pos[0], <any> animData.hierarchy[0].keys[0].pos[1],<any> animData.hierarchy[0].keys[0].pos[2]);
 
-    var singleGeometry = new THREE.Geometry();
-    singleGeometry.merge(sphere.geometry);
-    singleGeometry.merge(drill.geometry);
-    var unifiedMesh = new THREE.Mesh(singleGeometry,material);
+
    
 
-    // var sphereAnim = new THREE.Animation( sphere, animData);
-    var sphereAnim = new THREE.Animation(unifiedMesh,animData);
+    var sphereAnim = new THREE.Animation( sphere, animData);
+
     sphereAnim.loop = false;
     // sphereAnim.play();
 
-    // return [sphere, sphereAnim];
-    return [unifiedMesh,sphereAnim];
+    return [sphere, sphereAnim];
+
   }
 
   private createAnimData = (satNumber: number): THREE.AnimationData => {
@@ -142,7 +126,7 @@ class SatelliteSubsystem implements Subsystem {
     return <THREE.AnimationData> animData;
   }
 
-  private getKeyframeArray = (satNumber): Object => {
+  private getKeyframeArray = (satNumber ): Object => {
     var positionScale = Constants.scalingFactor;
     var result = [];
 
