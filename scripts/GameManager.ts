@@ -29,7 +29,7 @@ class GameManager {
 
   resObject: IExtendedResultObject;
 
-  subsystems: {[index: string]: Subsystem};
+  subsystems: {[index: string]: Subsystem}; //dictionary where the keys are the names of our subsystems 
 
   private animationSpeed: number;
   private animationTime: number;

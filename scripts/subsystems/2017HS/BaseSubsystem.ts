@@ -10,11 +10,8 @@ import ResultObject2017HS = ResultsModule2017HS.ResultObject2017HS;
 
 class BaseSubsystem implements Subsystem {
   private baseMesh: THREE.Mesh;
-
   private baseRadius = Constants.Y2017HS.baseRadius;
-
   private base: number[];
-
   private gameManager : GameManager;
   private resObject: ResultObject2017HS;
 
@@ -51,8 +48,6 @@ class BaseSubsystem implements Subsystem {
 
     this.gameManager.scene.add(mesh);
     mesh.position.fromArray(position);
-
-	console.log(mesh);
     return mesh;
   }
 }

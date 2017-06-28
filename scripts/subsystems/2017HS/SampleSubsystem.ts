@@ -23,9 +23,6 @@ class SampleSubsystem implements Subsystem {
 
 	init = () => {
 		var rObj = (<ResultObject2017HS> this.gameManager.resObject);
-
-	    
-
 		var animData = this.createAnimData();
 		for(var i = 0; i < 9; i++) {
 			var anim = new THREE.Animation(this.itemMeshes[i], animData[i]);
@@ -36,7 +33,6 @@ class SampleSubsystem implements Subsystem {
 
 	update = (dt:number, time:number, paused:boolean) => {
 		var time = this.gameManager.resObject.getShortIndexByTime(time);
-
 		for(var i = 7; i < 9; i++) {
 			if(this.itemData[i][time+1].pos[0] == 0 && this.itemData[i][time+1].pos[1] == 0 && this.itemData[i][time+1].pos[2] == 0) {
 				this.itemMeshes[i].visible = false;

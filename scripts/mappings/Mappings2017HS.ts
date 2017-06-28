@@ -91,21 +91,13 @@ getAnalyzer2 = ():number[] =>{
     return pos;
   }
   getZoneError = (satNumber: number):number[] => {
-  return this.simData.satData[satNumber].dU[3].map(x => x / 10000);
+  return this.simData.satData[satNumber].dU[3].map(x => x / 10000); //takes in an array and returns a new array where each element is divided by 10000
   }
 
-  getEstimatedZone = (satNumber: number):number[][] => {
-    for(var i = 0; i < this.simData.satData[satNumber].dU[3].length; i++) {
-    if(this.simData.satData[satNumber].dU[3][i] != -1) {
-
-    }
-  }
-  return null;
-  }
 
 
   getPointsPerSecond = (satNumber: number):number[] => {
-    return this.simData.satData[satNumber].dU[8].map(x => x / 100);
+    return this.simData.satData[satNumber].dU[8].map(x => x / 100); //same as getZoneError()
   }
 
   getReceiver = (satNumber: number):number[] => {
