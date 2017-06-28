@@ -49,7 +49,8 @@ It is very important that the code is extensible - it should be possible to easi
 * Constants should be defined and exported from the Constants.ts file
 * New Mappings and ResultObject files should be imported in `ConfigModule.ts`
 * The `results.json` file is how data is sent from the backend to the frontend
-    * //TODO: need more details about how the results.json file works
-    *
+    * After a game is generated from the backend, all of the data is saved in the `results.json` file
+    * The visualization side takes in that .json and uses it to show the game 
+    * Data from `results.json` is obtained inside the mappings20XX file where a ``ResultObject`` is used to share the data throughout the visualization code
 
 # zero-robotics-visualization
