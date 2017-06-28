@@ -41,4 +41,15 @@ The visualizer uses `three.js` for 3d graphics. Everything is controlled by the 
 ## Extensibility
 
 It is very important that the code is extensible - it should be possible to easily add support for visualizing the next year's game without breaking this year's functionality. This is addressed by having subsystems that would be custom-pluggable for each year's game, and custom mapping files (e.g. `Results2015.ts`) that contain all year-specific mappings and result data retrieval functions (which, in practice, means all the communication packet data, because its data mappings might change each year).
+
+## Implementation Tips
+
+* Mappings File: For every new game, a `Mappings20XX` file must be created to contain year-specific data. In that file, a year-specific ResultObject class is created and exported, extending the ResultObject interface.
+* Although the specific game items and their behavior changes yearly, previous years' subsystems code can often be reused and tweaked to fit the new requirements
+* Constants should be defined and exported from the Constants.ts file
+* New Mappings and ResultObject files should be imported in `ConfigModule.ts`
+* The `results.json` file is how data is sent from the backend to the frontend
+    * //TODO: need more details about how the results.json file works
+    *
+
 # zero-robotics-visualization
