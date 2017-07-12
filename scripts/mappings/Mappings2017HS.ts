@@ -1,7 +1,7 @@
 
 import BaseSubsystem = require("../subsystems/2017HS/BaseSubsystem");
 import AnalyzerSubsystem = require("../subsystems/2017HS/AnalyzerSubsystem");
-
+import TerrainSubsystem = require("../subsystems/2017HS/TerrainSubsystem");
 import GameSpecificStatsSubsystem = require("../subsystems/2017HS/GameSpecificStatsSubsystem");
 
 import GameManager = require("../GameManager");
@@ -22,6 +22,7 @@ export class ResultObject2017HS extends ResultObject implements IExResObject {
     gameManager.subsystems["BaseSubsystem"] = new BaseSubsystem(gameManager);  
     gameManager.subsystems["gameSpecificStats"] = new GameSpecificStatsSubsystem(gameManager);
     gameManager.subsystems["AnalyzerSubsystem"] = new AnalyzerSubsystem(gameManager);
+    gameManager.subsystems["TerrainSubsystem"] = new TerrainSubsystem(gameManager);
   }
   
   
