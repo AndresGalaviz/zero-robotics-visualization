@@ -15,8 +15,8 @@ class TerrainSubsystem implements Subsystem {
 		this.gameManager = gameManager;
 	}
     init = ()=>{
-        for(var i = 0;i<20;i++){
-            for(var j = 0;j<16;j++){
+        for(var i = 0;i<136;i+=8.5){
+            for(var j = 0;j<170;j+=8.5){
                     //                 for(var i = 0;i<20;i++){
                     // 	for(var j = 0;j<16;j++){
                     // 	var r = Math.ceil(Math.random()*4);
@@ -28,10 +28,18 @@ class TerrainSubsystem implements Subsystem {
                     // 	}
                     // } <--- three.js code tht doesn't really work that well lmao
                 var r = Math.ceil(Math.random()*4);
-                var geometry = new THREE.BoxGeometry( 1, r,1);
-                var material = new THREE.MeshBasicMaterial( {color: 0x00ff00} );
+                var geometry = new THREE.BoxGeometry( 8.5, r*8.5,8.5); //width, height depth 
+                if(r==1)
+                    var material = new THREE.MeshBasicMaterial( {color: 0xa7dff9} );
+                else if(r==2)
+                    var material = new THREE.MeshBasicMaterial( {color: 0x14a030} );
+                else if(r==3)
+                    var material = new THREE.MeshBasicMaterial( {color: 0xd8d524} );    
+                else
+                    var material = new THREE.MeshBasicMaterial( {color: 0xd3393b} );
+                
                 var cube = new THREE.Mesh( geometry, material );
-                cube.position.set(i,-65+r/2,0); //-65 is the bottom of z (?)
+                cube.position.set(i-64,-65+r*8.5/2,j-80); //position.set(i,j,k) corresponds to x,z,y
                 this.gameManager.scene.add( cube );	
             }
         }

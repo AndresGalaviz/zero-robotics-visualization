@@ -88,7 +88,7 @@ export class ResultObject2017HS extends ResultObject implements IExResObject {
       return pos 
   }
 getAnalyzer2 = ():number[] =>{
-    var pos = [-22.16,-33.18,-27.70];
+    var pos = [-22.16,33.18,-27.70];
     return pos;
   }
   getZoneError = (satNumber: number):number[] => {
