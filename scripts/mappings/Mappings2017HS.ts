@@ -109,6 +109,19 @@ getAnalyzer2 = ():number[] =>{
     return 0;
   }
 
+    getTerrainArray = (satNumber: number):number[][]=>{
+    //Right now unable to transmit data correctly so temporarily will hardcode terrain values
+    //(init[2]>>8)& 0xff
+    // (init[2])& 0Xff //<--- bit math to extract two numbers from one short use on each
+      var grid = [];
+      for(var i = 0;i<136;i+=8.5){
+        grid[i]= [];
+        for(var j = 0;j<170;j+=8.5)
+          grid[i][j]= Math.ceil(Math.random()*4);
+      }
+      return grid;
+    }
+
 
   convertToSigned = (unsignedNum : number): number => {
     if(unsignedNum & 0x8000)
