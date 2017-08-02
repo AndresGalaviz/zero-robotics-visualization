@@ -17,16 +17,6 @@ class TerrainSubsystem implements Subsystem {
     init = ()=>{
         for(var i = 0;i<136;i+=8.5){
             for(var j = 0;j<170;j+=8.5){
-                    //                 for(var i = 0;i<20;i++){
-                    // 	for(var j = 0;j<16;j++){
-                    // 	var r = Math.ceil(Math.random()*4);
-                    // 	var geometry = new THREE.BoxGeometry( 1, r,1);
-                    // 	var material = new THREE.MeshBasicMaterial( {color: 0x00ff00} );
-                    // 	var cube = new THREE.Mesh( geometry, material );
-                    // 	cube.position.set(i,j,0);
-                    // 	scene.add( cube );	
-                    // 	}
-                    // } <--- three.js code tht doesn't really work that well lmao
                 var r = Math.ceil(Math.random()*4);
                 var geometry = new THREE.BoxGeometry( 8.5, r*8.5,8.5); //width, height depth 
                 if(r==1)
