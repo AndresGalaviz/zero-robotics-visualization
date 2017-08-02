@@ -29,6 +29,14 @@ class AnalyzerSubsystem implements Subsystem {
 	}
 
 	update = (dt:number, time:number, paused:boolean) => {
+		if(this.resObject.getAnalyzerStatus(1)[0]==3){ // both of the analyzers have been obtained, doesn't matter by whom
+			this.gameManager.scene.remove(this.analyzer1Mesh);
+			this.gameManager.scene.remove(this.analyzer2Mesh);
+		}
+		else if(this.resObject.getAnalyzerStatus(1)[0]==1)
+			this.gameManager.scene.remove(this.analyzer1Mesh);
+		else if(this.resObject.getAnalyzerStatus(1)[0]==2)
+			this.gameManager.scene.remove(this.analyzer2Mesh);
 	}
 
 	play = (time: number) => {
@@ -52,6 +60,7 @@ class AnalyzerSubsystem implements Subsystem {
 		mesh.position.fromArray(position);
 		return mesh;
 	}
+
 }
 
 export = AnalyzerSubsystem;

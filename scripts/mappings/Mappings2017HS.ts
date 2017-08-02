@@ -122,6 +122,10 @@ getAnalyzer2 = ():number[] =>{
       return grid;
     }
 
+    getAnalyzerStatus = (satNumber: number):number[]=>{
+      return this.simData.satData[satNumber].dU[8]; //Sum of me and other's analyzer status 0 if none are taken, 1 if the first one, 2 if the second, 3 if both
+    }
+
 
   convertToSigned = (unsignedNum : number): number => {
     if(unsignedNum & 0x8000)
