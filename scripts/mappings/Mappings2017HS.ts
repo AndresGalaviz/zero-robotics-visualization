@@ -109,6 +109,23 @@ getAnalyzer2 = ():number[] =>{
     return 0;
   }
 
+    getTerrainArray = (satNumber: number):number[][]=>{
+    //Right now unable to transmit data correctly so temporarily will hardcode terrain values
+    //(init[2]>>8)& 0xff
+    // (init[2])& 0Xff //<--- bit math to extract two numbers from one short use on each
+      var grid = [];
+      for(var i = 0;i<136;i+=8.5){
+        grid[i]= [];
+        for(var j = 0;j<170;j+=8.5)
+          grid[i][j]= Math.ceil(Math.random()*4);
+      }
+      return grid;
+    }
+
+    getAnalyzerStatus = (satNumber: number):number[]=>{
+      return this.simData.satData[satNumber].dU[8]; //Sum of me and other's analyzer status 0 if none are taken, 1 if the first one, 2 if the second, 3 if both
+    }
+
 
   convertToSigned = (unsignedNum : number): number => {
     if(unsignedNum & 0x8000)
