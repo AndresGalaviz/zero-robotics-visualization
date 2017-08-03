@@ -113,16 +113,19 @@ getAnalyzer2 = ():number[] =>{
   //Right now unable to transmit data correctly so temporarily will hardcode terrain values
   //(init[2]>>8)& 0xff
   // (init[2])& 0Xff //<--- bit math to extract two numbers from one short use on each
-
-    for (var t = 188; t < this.simData.satData[0].dS[0].length; t++) {
-      var grid = [];
-      for(var i = 0;i<136;i+=8.5){
-        grid[i]= [];
-        for(var j = 0;j<170;j+=8.5)
-          grid[i][j]= Math.ceil(Math.random()*4);
+  var dS = this.simData.satData[0].dS;
+  var grid = [];
+  var counter = 0;
+    for(var i = 1;i<dS.length;i++){ //iterate through arrays 1 to 14 where our grid heights are stored 
+      for (var t = 188; t < dS[i].length; t++) {
+        grid.push([]);
+        grid.push([]);
+        grid[counter].push((dS[i][t]>>8) & 0xFF);
+        grid[counter+1].push(dS[i][t] & 0xFF);
+        counter++;
       }
-      return grid;
     }
+    return grid;
   }
 
   getAnalyzerStatus = (satNumber: number):number[]=>{
