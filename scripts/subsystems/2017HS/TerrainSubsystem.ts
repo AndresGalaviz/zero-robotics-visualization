@@ -17,11 +17,9 @@ class TerrainSubsystem implements Subsystem {
     init = ()=>{
         this.resObject = (<ResultObject2017HS> this.gameManager.resObject); 
         var grid = this.resObject.getTerrainArray(0); //16x20  array with the terrain heights ranging from 1-4 
-        for(var i = 0;i<170;i+=8.5){
+        for(var i = 0;i<170;i+=8.5){ //8.5 is because of scaling from game code to visualiztion, value might be incorrect though
             for(var j = 0;j<136;j+=8.5){
                 var height = grid[i/8.5][j/8.5];
-                // var height = Math.ceil(Math.random()*4);
-                console.log(grid[19][15]);
                 var geometry = new THREE.BoxGeometry( 8.5, height*8.5,8.5); //width, height, depth 
                 if(height==1)
                     var material = new THREE.MeshBasicMaterial( {color: 0xa7dff9} );

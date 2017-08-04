@@ -120,7 +120,7 @@ getAnalyzer2 = ():number[] =>{
         grid[counter].push((dS[i][t]>>8) & 0xFF);
         grid[counter+1].push(dS[i][t] & 0xFF);
       }
-      counter++;
+      counter+=2;
     }
     return grid;
   }
