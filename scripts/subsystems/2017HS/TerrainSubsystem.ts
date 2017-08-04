@@ -15,11 +15,11 @@ class TerrainSubsystem implements Subsystem {
 		this.gameManager = gameManager;
 	}
     init = ()=>{
-        this.resObject = (<ResultObject2017HS> this.gameManager.resObject); //Uses 2016 Result Object
-        var grid = this.resObject.getTerrainArray(0); //136x170 (?)  array with the terrain heights ranging from 1-4 Need to look into array indexing things
-        for(var i = 0;i<136;i+=8.5){
-            for(var j = 0;j<170;j+=8.5){
-                var height = grid[i][j];
+        this.resObject = (<ResultObject2017HS> this.gameManager.resObject); 
+        var grid = this.resObject.getTerrainArray(0); //16x20  array with the terrain heights ranging from 1-4 
+        for(var i = 0;i<170;i+=8.5){
+            for(var j = 0;j<136;j+=8.5){
+                var height = grid[i/8.5][j/8.5];
                 var geometry = new THREE.BoxGeometry( 8.5, height*8.5,8.5); //width, height, depth 
                 if(height==1)
                     var material = new THREE.MeshBasicMaterial( {color: 0xa7dff9} );
@@ -29,13 +29,13 @@ class TerrainSubsystem implements Subsystem {
                     var material = new THREE.MeshBasicMaterial( {color: 0xd8d524} );    
                 else
                     var material = new THREE.MeshBasicMaterial( {color: 0xd3393b} );
-                
                 var cube = new THREE.Mesh( geometry, material );
-                cube.position.set(i-64,-65+height*8.5/2,j-80); //position.set(i,j,k) corresponds to x,z,y
+                cube.position.set(j-64,-65+height*8.5/2,i-80); //position.set(i,j,k) corresponds to x,z,y
                 this.gameManager.scene.add( cube );	
-            }
+            }   
         }
     }
+
     update = (dt:number, time:number, paused:boolean) => {
 	}
 

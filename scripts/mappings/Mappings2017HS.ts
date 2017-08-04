@@ -110,20 +110,17 @@ getAnalyzer2 = ():number[] =>{
   }
 
   getTerrainArray = (satNumber: number):number[][]=>{
-  //Right now unable to transmit data correctly so temporarily will hardcode terrain values
-  //(init[2]>>8)& 0xff
-  // (init[2])& 0Xff //<--- bit math to extract two numbers from one short use on each
-  var dS = this.simData.satData[0].dS;
-  var grid = [];
-  var counter = 0;
-    for(var i = 1;i<dS.length;i++){ //iterate through arrays 1 to 14 where our grid heights are stored 
+    var dS = this.simData.satData[0].dS;
+    var grid = new Array();
+    var counter = 0;
+    for(var i = 1;i<11;i++){ //iterate through arrays 1 to 14 where our grid heights are stored 
+        grid.push([]);
+        grid.push([]);
       for (var t = 188; t < dS[i].length; t++) {
-        grid.push([]);
-        grid.push([]);
         grid[counter].push((dS[i][t]>>8) & 0xFF);
         grid[counter+1].push(dS[i][t] & 0xFF);
-        counter++;
       }
+      counter++;
     }
     return grid;
   }
