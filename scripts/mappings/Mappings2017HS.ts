@@ -137,15 +137,15 @@ getAnalyzer2 = ():number[] =>{
   }
 
   getGameType = (): GameType => {
-    var type = this.simData.satData[this.getMasterSphere()].dU[1][0];
+    var type = this.simData.satData[this.getMasterSphere()].dS[0][4];
     var mapping = {
       3: GameType.Alliance,
       2: GameType.ZR3D,
       1: GameType.ZR2D
     }
 
-    // return mapping[type];
-    return GameType.ZR3D;
+    return mapping[type];
+    // return GameType.ZR3D;
   }
 
 }
