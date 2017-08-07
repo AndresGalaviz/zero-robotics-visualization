@@ -22,13 +22,13 @@ class TerrainSubsystem implements Subsystem {
                 var height = grid[i/8.5][j/8.5];
                 var geometry = new THREE.BoxGeometry( 8.5, height*8.5,8.5); //width, height, depth 
                 if(height==1)
-                    var material = new THREE.MeshBasicMaterial( {color: 0xa7dff9} );
+                     var material = new THREE.MeshBasicMaterial( {color: 0x023A6D} );
                 else if(height==2)
-                    var material = new THREE.MeshBasicMaterial( {color: 0x14a030} );
+                    var material = new THREE.MeshBasicMaterial( {color: 0x326898} );
                 else if(height==3)
-                    var material = new THREE.MeshBasicMaterial( {color: 0xd8d524} );    
+                    var material = new THREE.MeshBasicMaterial( {color: 0x7A94DE} );   
                 else
-                    var material = new THREE.MeshBasicMaterial( {color: 0xd3393b} );
+                    var material = new THREE.MeshBasicMaterial( {color: 0xDFE6FA} );
                 var cube = new THREE.Mesh( geometry, material );
                 cube.position.set(j-64,-65+height*8.5/2,i-80); //position.set(i,j,k) corresponds to x,z,y
                 this.gameManager.scene.add( cube );	
