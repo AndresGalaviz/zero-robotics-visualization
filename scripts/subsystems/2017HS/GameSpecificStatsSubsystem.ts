@@ -20,7 +20,7 @@ class GameSpecificStatsSubsystem extends StatsSubsystem implements Subsystem {
     var labels: StatsSubsystemMod.Labels =
     {
       longArrayLabels: [],
-      shortArrayLabels: ["SPS Held:", "SPS Error:", "Has Adapter:", "Points/Sec:"]
+      shortArrayLabels: ["Samples Held:", "Has Analyzer:", "Points/Sec:"]
     }
 
     var sphereZeroStatsObject = $("#statsbox-sphere1 #gamespecificstatsbox");
@@ -35,7 +35,7 @@ class GameSpecificStatsSubsystem extends StatsSubsystem implements Subsystem {
 
       containerClasses.push("wide");
 
-      if (label == "Has Adapter:") {
+      if (label == "Has Analyzer:") {
         if (value > 0) valueClasses.push("green");
         else valueClasses.push("red");
       }
@@ -44,18 +44,13 @@ class GameSpecificStatsSubsystem extends StatsSubsystem implements Subsystem {
     }
 
     this.mapValue = (label: string, val: number): string => {
-  	  if(label == "SPS Held:") {
-  	  	return Math.floor(val).toString();
-  	  } else if(label == "SPS Error:") {
-  	  	if (val > 5) {
-  			 return "N/A";
-        } 
-  		} else if (label == "Has Adapter:") {
-        if (val > 0) {
+  	  if(label == "Samples Held:") 
+        return Math.floor(val).toString();
+       else if (label == "Has Adapter:") {
+        if (val > 0) 
           return "yes";
-        } else {
+        else 
           return "no";
-        }
       }
       return val.toString();
     }
