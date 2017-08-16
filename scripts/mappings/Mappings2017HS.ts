@@ -126,7 +126,15 @@ getAnalyzer2 = ():number[] =>{
   }
 
   getAnalyzerStatus = (satNumber: number):number[]=>{
-    return this.simData.satData[satNumber].dU[8]; //Sum of me and other's analyzer status 0 if none are taken, 1 if the first one, 2 if the second, 3 if both
+    return this.simData.satData[satNumber].dU[6]; //Sum of me and other's analyzer status 0 if none are taken, 1 if the first one, 2 if the second, 3 if both
+  }
+
+  getMeAnalyzer = (satNumber: number): number[]=>{
+    return this.simData.satData[satNumber].dU[7]; //returns the me.hasAnalyzer stat which will be 1 or 2 if a sphere has an analyzer
+  }
+
+  getOtherAnalyzer = (satNumber: number): number[] => {
+    return this.simData.satData[satNumber].dU[8]; //returns other.analyzer see getMeAnalyzer
   }
 
 
