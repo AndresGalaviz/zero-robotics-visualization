@@ -34,7 +34,7 @@ module ConfigModule {
 
   export var Config: Type = {
     GameVersion: "ZRHS2017",
-    CamStartingPosition: [0, -2.5, -1],
+    CamStartingPosition: [0, 0, -2.5],
   }
 
   export function Set(c: Type) {

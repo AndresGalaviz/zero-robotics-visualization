@@ -20,7 +20,7 @@ class GameSpecificStatsSubsystem extends StatsSubsystem implements Subsystem {
     var labels: StatsSubsystemMod.Labels =
     {
       longArrayLabels: [],
-      shortArrayLabels: ["Samples Held:", "Has Analyzer:", "Points/Sec:"]
+      shortArrayLabels: ["Samples Held:", "Has Analyzer:", "Total Samples:"]
     }
 
     var sphereZeroStatsObject = $("#statsbox-sphere1 #gamespecificstatsbox");
@@ -52,7 +52,10 @@ class GameSpecificStatsSubsystem extends StatsSubsystem implements Subsystem {
         else 
           return "no";
       }
-      return val.toString();
+      else if(label=="Total Samples:"){
+        return val.toString();
+      }
+      return "error";
     }
   }
 
@@ -62,9 +65,9 @@ class GameSpecificStatsSubsystem extends StatsSubsystem implements Subsystem {
     return {
       longArrays: [],
       shortArrays: [
-        (<ResultObject2017HS> this.gameManager.resObject).getZoneError(satNumber),
-        (<ResultObject2017HS> this.gameManager.resObject).getReceiver(satNumber),
-        (<ResultObject2017HS> this.gameManager.resObject).getPointsPerSecond(satNumber)
+        (<ResultObject2017HS> this.gameManager.resObject).getSamplesHeld(satNumber),
+        (<ResultObject2017HS> this.gameManager.resObject).getAnalyzer(satNumber),
+        (<ResultObject2017HS> this.gameManager.resObject).getTotalSamples(satNumber)
       ]
     };
   }

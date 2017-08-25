@@ -22,7 +22,7 @@ class BaseSubsystem implements Subsystem {
   init = () => {
     this.resObject = <ResultObject2017HS> this.gameManager.resObject;
     this.base = this.resObject.getBase();
-    this.baseMesh = this.setupZone(this.base, 0x0000FF);
+    this.baseMesh = this.setupZone(this.base, 0x09bc15);
   }
 
   update = (dt:number, time:number, paused:boolean) => {

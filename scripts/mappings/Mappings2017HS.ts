@@ -84,30 +84,37 @@ export class ResultObject2017HS extends ResultObject implements IExResObject {
     return zone;
   }
   getAnalyzer1 = ():number[] =>{
-      var pos = [30,36,48]; //returns the position of the first analyzer object
-      return pos 
+    if(this.getGameType()==GameType.ZR2D)
+      var pos = [30,0,-48]; //returns the position of the first analyzer object
+    else
+      var pos = [30,36,-48];
+    return pos 
   }
 getAnalyzer2 = ():number[] =>{
-    var pos = [-30,36,-48];
-    return pos;
+  if(this.getGameType()==GameType.ZR2D)
+    var pos = [-30,0,48];
+  else
+    var pos = [-30,36,48];
+  return pos;
   }
-  getZoneError = (satNumber: number):number[] => {
-  return this.simData.satData[satNumber].dU[3].map(x => x / 10000); //takes in an array and returns a new array where each element is divided by 10000
+
+  getSamplesHeld = (satNumber: number):number[] => {
+    return this.simData.satData[satNumber].dU[5]; //takes in an array and returns a new array where each element is divided by 10000
+  }
+
+  getAnalyzer = (satNumber: number):number[] => {
+    var result = new Array(this.simData.satData[satNumber].dU[8].length);
+    for(var i = 0;i<this.simData.satData[satNumber].dU[8].length;i++){
+      result[i] = this.simData.satData[satNumber].dU[8][i]*2+this.simData.satData[satNumber].dU[7][i];
+    }
+    return result; 
+  }
+
+  getTotalSamples = (satNumber: number):number[] => {
+    return this.simData.satData[satNumber].dU[6];
   }
 
 
-
-  getPointsPerSecond = (satNumber: number):number[] => {
-    return this.simData.satData[satNumber].dU[8].map(x => x / 100); //same as getZoneError()
-  }
-
-  getReceiver = (satNumber: number):number[] => {
-    return this.simData.satData[satNumber].dU[10];
-  }
-
-  getFace = (itemID : number):number => {
-    return 0;
-  }
 
   getTerrainArray = (satNumber: number):number[][]=>{
     var dS = this.simData.satData[0].dS;
@@ -124,19 +131,6 @@ getAnalyzer2 = ():number[] =>{
     }
     return grid;
   }
-
-  getAnalyzerStatus = (satNumber: number):number[]=>{
-    return this.simData.satData[satNumber].dU[6]; //Sum of me and other's analyzer status 0 if none are taken, 1 if the first one, 2 if the second, 3 if both
-  }
-
-  getMeAnalyzer = (satNumber: number): number[]=>{
-    return this.simData.satData[satNumber].dU[7]; //returns the me.hasAnalyzer stat which will be 1 or 2 if a sphere has an analyzer
-  }
-
-  getOtherAnalyzer = (satNumber: number): number[] => {
-    return this.simData.satData[satNumber].dU[8]; //returns other.analyzer see getMeAnalyzer
-  }
-
 
   convertToSigned = (unsignedNum : number): number => {
     if(unsignedNum & 0x8000)
