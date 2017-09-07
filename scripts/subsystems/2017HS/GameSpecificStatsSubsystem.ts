@@ -46,7 +46,7 @@ class GameSpecificStatsSubsystem extends StatsSubsystem implements Subsystem {
     this.mapValue = (label: string, val: number): string => {
   	  if(label == "Samples Held:") 
         return Math.floor(val).toString();
-       else if (label == "Has Adapter:") {
+       else if (label == "Has Analyzer:") {
         if (val > 0) 
           return "yes";
         else 

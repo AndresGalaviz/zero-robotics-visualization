@@ -23,7 +23,7 @@ module Constants {
   }
 
   export module Y2017HS {
-    export var baseRadius = .25 * scalingFactor;
+    export var baseRadius = .15 * scalingFactor;
     export var analyzerRadius = .11 * scalingFactor;
   }
 

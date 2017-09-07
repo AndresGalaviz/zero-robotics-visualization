@@ -141,7 +141,8 @@ class GameManager {
   	//Mouse orbit control
   	this.controls = new THREE.OrbitControls(this.camera, this.renderer.domElement);
   	// this.controls.damping = 0.2;
-  	this.controls.addEventListener("change", this.render );
+    this.controls.addEventListener("change", this.render );
+    
   }
 
   loop = (_: number, force: boolean = false) => {

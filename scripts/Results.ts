@@ -64,8 +64,7 @@ export class ResultObject {
   }
 
   getDataStateArray = (satNumber: number):number[][] => {
-    //return this.simData.satData[satNumber].st;
-	return this.simData.satData[satNumber].st;
+  	return this.simData.satData[satNumber].st;
   }
 
   getMasterSphere = ():number => {

@@ -49,7 +49,7 @@ class TerrainSubsystem implements Subsystem {
                     else if(conc ==3)
                         var material = new THREE.MeshBasicMaterial( {color: 0x61a2ed} );
                     else
-                        var material = new THREE.MeshBasicMaterial( {transparent:true,opacity: 0.5 } );
+                        var material = new THREE.MeshBasicMaterial( {transparent:true,opacity: 0.1 } );
                     var square = new THREE.Mesh(geometry,material);
                     square.position.set(j-60,-15,i-76); 
                     this.gameManager.scene.add(square);                   

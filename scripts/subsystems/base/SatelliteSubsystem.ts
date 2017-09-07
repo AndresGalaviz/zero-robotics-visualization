@@ -23,7 +23,7 @@ class SatelliteSubsystem implements Subsystem {
 
   init = () => {
  
-    [this.sphereZeroMesh, this.sphereZeroAnim] = this.constructSphere(0, new THREE.Geometry() ,3, null); //why does this work a c k 
+    [this.sphereZeroMesh, this.sphereZeroAnim] = this.constructSphere(0, new THREE.Geometry() ,3, null); 
     [this.sphereOneMesh, this.sphereOneAnim] = this.constructSphere(1, new THREE.Geometry(),3, null);
     this.gameManager.scene.add(this.sphereZeroMesh);
     this.gameManager.scene.add(this.sphereOneMesh);
@@ -75,29 +75,9 @@ class SatelliteSubsystem implements Subsystem {
 
   private constructSphere = (sphereIndex : number, spheregeometry: THREE.Geometry,drillgeometry: number, 
     material: THREE.Material): [THREE.Mesh, THREE.Animation] => {
-
-
-// var material = new THREE.MeshBasicMaterial( {color: 0xffff00} );
-
-// var drillGeo = new THREE.ConeGeometry(5,5,5);
-// var drill = new THREE.Mesh(drillGeo,material);
-// var sphereGeo = new THREE.SphereGeometry(5,30,30);
-// var sphere = new THREE.Mesh(sphereGeo,material);
-// var singleGeometry = new THREE.Geometry();
-
-// singleGeometry.merge(drill.geometry);
-// //drill.updateMatrix();
-// singleGeometry.merge(sphere.geometry);
-// var unifiedMesh = new THREE.Mesh(singleGeometry,material);
-// scene.add(unifiedMesh); <--- works in THREE.Js editor but not here :(
     var sphere = new THREE.Mesh( spheregeometry.clone(), material);
-    // var drill = new THREE.Mesh(drillgeometry,material);
-     var animData = this.createAnimData(sphereIndex);
+    var animData = this.createAnimData(sphereIndex);
     sphere.position.set(<any> animData.hierarchy[0].keys[0].pos[0], <any> animData.hierarchy[0].keys[0].pos[1],<any> animData.hierarchy[0].keys[0].pos[2]);
-
-
-   
-
     var sphereAnim = new THREE.Animation( sphere, animData);
 
     sphereAnim.loop = false;
