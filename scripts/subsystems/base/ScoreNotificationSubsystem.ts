@@ -46,7 +46,6 @@ class ScoreNotificationSubsystem implements Subsystem {
         if (sphere == 0) satObject = this.satSubsystem.sphereZeroMesh
         else satObject = this.satSubsystem.sphereOneMesh
 		var diff = (currScore - prevScore);
-		if(Math.abs(diff - (<ResultObject2016HS>this.gameManager.resObject).getPointsPerSecond(sphere)[idx-1]) < 0.001) return; // TODO do this within 2016 subsystems. remove this line if still exists in 2017
 		var newObject = new NotificationObject(satObject, this.gameManager, (diff > 0 ? "+" : "") + diff.toFixed(2), time);        
             
         this.sphereNotifications.push(newObject);   

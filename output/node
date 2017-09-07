@@ -1,41 +1,46 @@
 
-Tracing dependencies for: /Users/michowdh/sandbox/bakup/m/urop_dev_env/zr_visual_docker/sources/visualization/out/full/main.js
-Uglifying file: /Users/michowdh/sandbox/bakup/m/urop_dev_env/zr_visual_docker/sources/visualization/out/full/main.js
+Tracing dependencies for: /Users/Swissking1/Dropbox (MIT)/zero-robotics-visualization/out/full/main.js
+Uglifying file: /Users/Swissking1/Dropbox (MIT)/zero-robotics-visualization/out/full/main.js
 
-/Users/michowdh/sandbox/bakup/m/urop_dev_env/zr_visual_docker/sources/visualization/out/full/main.js
+/Users/Swissking1/Dropbox (MIT)/zero-robotics-visualization/out/full/main.js
 ----------------
-/Users/michowdh/sandbox/bakup/m/urop_dev_env/zr_visual_docker/sources/visualization/out/scripts/scripts/Constants.js
-/Users/michowdh/sandbox/bakup/m/urop_dev_env/zr_visual_docker/sources/visualization/out/scripts/scripts/subsystems/2015/SwitchingLightSubsystem.js
-/Users/michowdh/sandbox/bakup/m/urop_dev_env/zr_visual_docker/sources/visualization/out/scripts/scripts/subsystems/2015/MovingLightSubsystem.js
-/Users/michowdh/sandbox/bakup/m/urop_dev_env/zr_visual_docker/sources/visualization/out/scripts/scripts/subsystems/template/StatsSubsystem.js
-/Users/michowdh/sandbox/bakup/m/urop_dev_env/zr_visual_docker/sources/visualization/out/scripts/scripts/subsystems/2015/GameSpecificStatsSubsystem.js
-/Users/michowdh/sandbox/bakup/m/urop_dev_env/zr_visual_docker/sources/visualization/out/scripts/scripts/subsystems/2015/UploadSubsystem.js
-/Users/michowdh/sandbox/bakup/m/urop_dev_env/zr_visual_docker/sources/visualization/out/scripts/scripts/subsystems/2015/MirrorSubsystem.js
-/Users/michowdh/sandbox/bakup/m/urop_dev_env/zr_visual_docker/sources/visualization/out/scripts/scripts/Helpers.js
-/Users/michowdh/sandbox/bakup/m/urop_dev_env/zr_visual_docker/sources/visualization/out/scripts/scripts/subsystems/2015/PhotoSubsystem.js
-/Users/michowdh/sandbox/bakup/m/urop_dev_env/zr_visual_docker/sources/visualization/out/scripts/scripts/subsystems/2015/ItemSubsystem.js
-/Users/michowdh/sandbox/bakup/m/urop_dev_env/zr_visual_docker/sources/visualization/out/scripts/scripts/Results.js
-/Users/michowdh/sandbox/bakup/m/urop_dev_env/zr_visual_docker/sources/visualization/out/scripts/scripts/mappings/Mappings2015.js
-/Users/michowdh/sandbox/bakup/m/urop_dev_env/zr_visual_docker/sources/visualization/out/scripts/scripts/subsystems/2016MS/SwitchingLightSubsystem.js
-/Users/michowdh/sandbox/bakup/m/urop_dev_env/zr_visual_docker/sources/visualization/out/scripts/scripts/subsystems/2016MS/GameSpecificStatsSubsystem.js
-/Users/michowdh/sandbox/bakup/m/urop_dev_env/zr_visual_docker/sources/visualization/out/scripts/scripts/mappings/Mappings2016MS.js
-/Users/michowdh/sandbox/bakup/m/urop_dev_env/zr_visual_docker/sources/visualization/out/scripts/scripts/mappings/Mappings2015_ISS.js
-/Users/michowdh/sandbox/bakup/m/urop_dev_env/zr_visual_docker/sources/visualization/out/scripts/scripts/subsystems/2016HS/ZoneSubsystem.js
-/Users/michowdh/sandbox/bakup/m/urop_dev_env/zr_visual_docker/sources/visualization/out/scripts/scripts/subsystems/2016HS/SpsSubsystem.js
-/Users/michowdh/sandbox/bakup/m/urop_dev_env/zr_visual_docker/sources/visualization/out/scripts/scripts/subsystems/2016HS/GameSpecificStatsSubsystem.js
-/Users/michowdh/sandbox/bakup/m/urop_dev_env/zr_visual_docker/sources/visualization/out/scripts/scripts/subsystems/2016HS/ItemSubsystem.js
-/Users/michowdh/sandbox/bakup/m/urop_dev_env/zr_visual_docker/sources/visualization/out/scripts/scripts/mappings/Mappings2016HS.js
-/Users/michowdh/sandbox/bakup/m/urop_dev_env/zr_visual_docker/sources/visualization/out/scripts/scripts/mappings/Mappings2016HS_ISS.js
-/Users/michowdh/sandbox/bakup/m/urop_dev_env/zr_visual_docker/sources/visualization/out/scripts/scripts/mappings/MappingsFreeMode.js
-/Users/michowdh/sandbox/bakup/m/urop_dev_env/zr_visual_docker/sources/visualization/out/scripts/scripts/ConfigModule.js
-/Users/michowdh/sandbox/bakup/m/urop_dev_env/zr_visual_docker/sources/visualization/out/scripts/scripts/GameManager.js
-/Users/michowdh/sandbox/bakup/m/urop_dev_env/zr_visual_docker/sources/visualization/out/scripts/scripts/subsystems/base/DebugTextSubsystem.js
-/Users/michowdh/sandbox/bakup/m/urop_dev_env/zr_visual_docker/sources/visualization/out/scripts/scripts/subsystems/base/TimeSubsystem.js
-/Users/michowdh/sandbox/bakup/m/urop_dev_env/zr_visual_docker/sources/visualization/out/scripts/scripts/subsystems/base/AxisSubsystem.js
-/Users/michowdh/sandbox/bakup/m/urop_dev_env/zr_visual_docker/sources/visualization/out/scripts/scripts/subsystems/base/ScoreNotificationSubsystem.js
-/Users/michowdh/sandbox/bakup/m/urop_dev_env/zr_visual_docker/sources/visualization/out/scripts/scripts/subsystems/base/ProgressBarSubsystem.js
-/Users/michowdh/sandbox/bakup/m/urop_dev_env/zr_visual_docker/sources/visualization/out/scripts/scripts/subsystems/base/SatelliteSubsystem.js
-/Users/michowdh/sandbox/bakup/m/urop_dev_env/zr_visual_docker/sources/visualization/out/scripts/scripts/subsystems/base/BaseStatsSubsystem.js
-/Users/michowdh/sandbox/bakup/m/urop_dev_env/zr_visual_docker/sources/visualization/out/scripts/scripts/subsystems/base/OutOfBoundsSubsystem.js
-/Users/michowdh/sandbox/bakup/m/urop_dev_env/zr_visual_docker/sources/visualization/out/scripts/scripts/ZR.js
+/Users/Swissking1/Dropbox (MIT)/zero-robotics-visualization/out/scripts/scripts/Constants.js
+/Users/Swissking1/Dropbox (MIT)/zero-robotics-visualization/out/scripts/scripts/subsystems/2015/SwitchingLightSubsystem.js
+/Users/Swissking1/Dropbox (MIT)/zero-robotics-visualization/out/scripts/scripts/subsystems/2015/MovingLightSubsystem.js
+/Users/Swissking1/Dropbox (MIT)/zero-robotics-visualization/out/scripts/scripts/subsystems/template/StatsSubsystem.js
+/Users/Swissking1/Dropbox (MIT)/zero-robotics-visualization/out/scripts/scripts/subsystems/2015/GameSpecificStatsSubsystem.js
+/Users/Swissking1/Dropbox (MIT)/zero-robotics-visualization/out/scripts/scripts/subsystems/2015/UploadSubsystem.js
+/Users/Swissking1/Dropbox (MIT)/zero-robotics-visualization/out/scripts/scripts/subsystems/2015/MirrorSubsystem.js
+/Users/Swissking1/Dropbox (MIT)/zero-robotics-visualization/out/scripts/scripts/Helpers.js
+/Users/Swissking1/Dropbox (MIT)/zero-robotics-visualization/out/scripts/scripts/subsystems/2015/PhotoSubsystem.js
+/Users/Swissking1/Dropbox (MIT)/zero-robotics-visualization/out/scripts/scripts/subsystems/2015/ItemSubsystem.js
+/Users/Swissking1/Dropbox (MIT)/zero-robotics-visualization/out/scripts/scripts/Results.js
+/Users/Swissking1/Dropbox (MIT)/zero-robotics-visualization/out/scripts/scripts/mappings/Mappings2015.js
+/Users/Swissking1/Dropbox (MIT)/zero-robotics-visualization/out/scripts/scripts/subsystems/2016MS/SwitchingLightSubsystem.js
+/Users/Swissking1/Dropbox (MIT)/zero-robotics-visualization/out/scripts/scripts/subsystems/2016MS/GameSpecificStatsSubsystem.js
+/Users/Swissking1/Dropbox (MIT)/zero-robotics-visualization/out/scripts/scripts/mappings/Mappings2016MS.js
+/Users/Swissking1/Dropbox (MIT)/zero-robotics-visualization/out/scripts/scripts/mappings/Mappings2015_ISS.js
+/Users/Swissking1/Dropbox (MIT)/zero-robotics-visualization/out/scripts/scripts/subsystems/2016HS/ZoneSubsystem.js
+/Users/Swissking1/Dropbox (MIT)/zero-robotics-visualization/out/scripts/scripts/subsystems/2016HS/SpsSubsystem.js
+/Users/Swissking1/Dropbox (MIT)/zero-robotics-visualization/out/scripts/scripts/subsystems/2016HS/GameSpecificStatsSubsystem.js
+/Users/Swissking1/Dropbox (MIT)/zero-robotics-visualization/out/scripts/scripts/subsystems/2016HS/ItemSubsystem.js
+/Users/Swissking1/Dropbox (MIT)/zero-robotics-visualization/out/scripts/scripts/mappings/Mappings2016HS.js
+/Users/Swissking1/Dropbox (MIT)/zero-robotics-visualization/out/scripts/scripts/mappings/Mappings2016HS_ISS.js
+/Users/Swissking1/Dropbox (MIT)/zero-robotics-visualization/out/scripts/scripts/subsystems/2017HS/BaseSubsystem.js
+/Users/Swissking1/Dropbox (MIT)/zero-robotics-visualization/out/scripts/scripts/subsystems/2017HS/AnalyzerSubsystem.js
+/Users/Swissking1/Dropbox (MIT)/zero-robotics-visualization/out/scripts/scripts/subsystems/2017HS/TerrainSubsystem.js
+/Users/Swissking1/Dropbox (MIT)/zero-robotics-visualization/out/scripts/scripts/subsystems/2017HS/GameSpecificStatsSubsystem.js
+/Users/Swissking1/Dropbox (MIT)/zero-robotics-visualization/out/scripts/scripts/mappings/Mappings2017HS.js
+/Users/Swissking1/Dropbox (MIT)/zero-robotics-visualization/out/scripts/scripts/mappings/MappingsFreeMode.js
+/Users/Swissking1/Dropbox (MIT)/zero-robotics-visualization/out/scripts/scripts/ConfigModule.js
+/Users/Swissking1/Dropbox (MIT)/zero-robotics-visualization/out/scripts/scripts/GameManager.js
+/Users/Swissking1/Dropbox (MIT)/zero-robotics-visualization/out/scripts/scripts/subsystems/base/DebugTextSubsystem.js
+/Users/Swissking1/Dropbox (MIT)/zero-robotics-visualization/out/scripts/scripts/subsystems/base/TimeSubsystem.js
+/Users/Swissking1/Dropbox (MIT)/zero-robotics-visualization/out/scripts/scripts/subsystems/base/AxisSubsystem.js
+/Users/Swissking1/Dropbox (MIT)/zero-robotics-visualization/out/scripts/scripts/subsystems/base/ScoreNotificationSubsystem.js
+/Users/Swissking1/Dropbox (MIT)/zero-robotics-visualization/out/scripts/scripts/subsystems/base/ProgressBarSubsystem.js
+/Users/Swissking1/Dropbox (MIT)/zero-robotics-visualization/out/scripts/scripts/subsystems/base/SatelliteSubsystem.js
+/Users/Swissking1/Dropbox (MIT)/zero-robotics-visualization/out/scripts/scripts/subsystems/base/BaseStatsSubsystem.js
+/Users/Swissking1/Dropbox (MIT)/zero-robotics-visualization/out/scripts/scripts/subsystems/base/OutOfBoundsSubsystem.js
+/Users/Swissking1/Dropbox (MIT)/zero-robotics-visualization/out/scripts/scripts/ZR.js
 
